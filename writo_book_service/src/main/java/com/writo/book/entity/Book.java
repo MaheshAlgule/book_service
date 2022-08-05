@@ -12,12 +12,10 @@ public class Book {
 	private String bookName;
 	private String genere;
 	private Integer authorId;
-	
-	
-	public int getBookId() {
+	public Integer getBookId() {
 		return bookId;
 	}
-	public void setBookId(int bookId) {
+	public void setBookId(Integer bookId) {
 		this.bookId = bookId;
 	}
 	public String getBookName() {
@@ -32,10 +30,10 @@ public class Book {
 	public void setGenere(String genere) {
 		this.genere = genere;
 	}
-	public int getAuthorId() {
+	public Integer getAuthorId() {
 		return authorId;
 	}
-	public void setAuthorId(int authorId) {
+	public void setAuthorId(Integer authorId) {
 		this.authorId = authorId;
 	}
 	

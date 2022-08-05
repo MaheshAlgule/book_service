@@ -34,7 +34,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public BookDTO getBook(int bookId) throws BookException {
+	public BookDTO getBook(Integer bookId) throws BookException {
 
 		Optional<Book> bookOptional = bookRepository.findById(bookId);
 		Book book = bookOptional.orElseThrow(() -> new BookException("Book no available"));
@@ -46,14 +46,14 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public Integer addBook(BookDTO bookDTO) {
-
+		System.out.println(bookDTO);
 		Book book = convertToEntity(bookDTO);
 		Book savedBook = bookRepository.save(book);
 		return savedBook.getBookId();
 	}
 
 	@Override
-	public Boolean updateBookName(String bookName, int bookId) throws BookException {
+	public Boolean updateBookName(String bookName, Integer bookId) throws BookException {
 
 		Optional<Book> bookOptional = bookRepository.findById(bookId);
 		Book book = bookOptional.orElseThrow(() -> new BookException("Book no available"));
@@ -62,10 +62,13 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Boolean deleteBook(int bookId) throws BookException {
+	public Boolean deleteBook(Integer bookId) throws BookException {
 		Optional<Book> bookOptional = bookRepository.findById(bookId);
 		Book book = bookOptional.orElseThrow(() -> new BookException("Book no available"));
-		bookRepository.delete(book);
+		if(book != null) {
+			bookRepository.delete(book);
+		}
+		
 		return true;
 
 	}
